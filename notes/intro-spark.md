@@ -1,97 +1,135 @@
 #Intro
 
-* A lot of jabah from databricks about their notebook thing, that is like google docs
+* A lot of *jabah* from databricks about their notebook thing.
 * Has stuff like visualization of data (d3js)
 * Loves functional programming (Clojure) :-)
-* Lazy evaluated, just builds graph ([DAG](http://en.wikipedia.org/wiki/Directed_acyclic_graph) )
+* Lazy evaluated, just builds graphs ([DAG](http://en.wikipedia.org/wiki/Directed_acyclic_graph) )
   with transformations and wait action to start evaluation.
-* Filtering / lambda based
+* Transformations / lambda based
 * Pipeline based, makes good use of cache, works on memory
-* Well suited to functional programming, map and filtering builds a graph
-* Remove synchronization using function composition and algebra :D
-* A program is a collection of functions working on arrays of data.
+* Remove synchronization requirements using function composition and algebra :D
+* Core concept is a collection of functions working on arrays of data.
 
 
 ## MapReduce x Spark
 
-* MapReduce if for fault tolerance (eg. disk failures on jobs that takes 24 hours)
+
+Some ideas:
+
+* MapReduce was made for fault tolerance (eg. disk failures on computers from 2002)
 * MapReduce is made for commodity hardware from 2002
-* Changes like multicores, more memory, SSD, faster networking.
-* Spark tries to leverage this
-* MapReduce is hard to understand (hive, pig to make it easier).
-* Instead of using a lot of clusters and tools converge it to one core supporting different programing models.
-* Hadoop has synchronization barriers (reduce/merge phase), Spark avoids this partitioning data by key
+* Changes like multicores, more memory, SSD, faster networking changed the game.
+* Spark tries to leverage these changes with a graph streaming model.
+* MapReduce is hard to understand (hive, pig and other frameworks try to make it easier).
+* Hadoop has synchronization barriers (reduce/merge phase), Spark avoids this by giving you control of checkpoints.
+* Runs native Python, you have to provision the container with libraries, but it does not run on the JVM (no indirection).
+
+I understood that Spark provides a more flexible programming model. You are not constrained
+by map / reduce phases.
+
+Since Hadoop was built on the idea of fault tolerance on a time that disk failure was high and memory was more
+expensive it does a lot of heavy I/O, this leads to a poor performance when you compare hadoop with spark
+(on some cases).
+
+Later on there will be a interesting use case from spotify that relates to this idea.
 
 
 ## Design and stuff
 
-* Runs native Python, you have to provision the node with libraries, but it does not run on the JVM.
-* If RDD partition is lost it will recover by recomputing (all nodes knows the graph)
+* If RDD partition is lost it will recover by recomputing (all nodes knows the entire graph)
 * If upstream processing is too heavy you can do checkpoints (tradeoff)
-* Accumulators can be used for telemetry on performance tests, or error collection.
-* Broadcast variables are useful for small datasets.
+* [Accumulators](TODO) can be used for telemetry on performance tests, or error collection.
+* [Broadcast](TODO) variables are useful for small datasets.
 * Has logical views of [RDDs to make it SQL](http://spark.apache.org/docs/latest/sql-programming-guide.html).
-* Loading JSON as a RDD and apply a SQL logical view.
-* Enables you to use SQL and visualize the structure of JSON data.
+* Eg. Loading a JSON as a RDD and apply a SQL logical view (visualize the structure of JSON data).
 * SQL is a form of algebra, analogous to functional stuff (map/filter/etc).
 
+On spark you have total freedom to transform data the way you want to. It is built on the idea of a
+[DAG](TODO) that have a source and a sink.
 
-## Math
+The endpoints (source and sink) can be any Hadoop filesystem and also a remote endpoint.
+It is pretty easy to receive data from a event source live and create an processing graph for it, sending
+results to another remote endpoint or saving it on a HDFS (or other distributed filesystem).
 
-* functional programming and algebra, [Algebird !!](https://github.com/twitter/algebird)
-* The idea of use monoids as a container for functions, if the function is a monoid the details are irrelevant.
+There is no protocol defined for remote endpoints, they can be raw sockets with your data flowing on them
+(fits the streaming nature of TCP).
+
+Fault tolerance can be done with two ideas:
+
+* Reprocess the entire graph on a new Node
+* Use checkpoints (similar to hadoop synchronization)
+
+You are always on control.
+
+TODO: Ask Paco about the reprocess graph thing when spark is processing a live feed.
 
 
 ## MLlib
 
 * Machine learning on spark
 * Focused on scale, parallelism and sparsity
-* classifiers, regression
-* lot of unsupervised learning using matrix factoring
-* useful for marketing (eg, market segmentation)
-* lot of small exercises using [K-Means clustering](http://en.wikipedia.org/wiki/K-means_clustering)
-* works well with big square matrices (contributions from stanford)
+* Classifiers, regression
+* Lot of unsupervised learning using matrix factoring
+* Useful for marketing (eg, clustering for market segmentation)
+* Lot of small exercises using [K-Means clustering](http://en.wikipedia.org/wiki/K-means_clustering)
+* Works well with big square matrices (contributions from stanford)
+
+There is some work on the way to add [deep neural networks](TODO DEEP MIND) 
+on spark too, but it seems to be a work on progress.
 
 
 ## GraphX
 
-* Cool example solving the shortest path possible from two nodes.
+There is a lot of support to model graphs and apply algorithms to them.
+
+He also talked a lot about graph visualization.
+
+Some tools related to graphs that where mentioned:
+
+* [DeepDive](http://deepdive.stanford.edu/)
+* [Titan](http://thinkaurelius.github.io/titan/)
+* [D3JS](http://d3js.org/)
+* Giraph
+* Graphlab
 
 
 ## Cases
 
 ### Spotify
 
-Spotify used Hadoop to do music recommendation. Wanted to cut costs.
+Spotify used Hadoop to build the music recommendation system. 
 
-Hadoop has a lot of synchronization steps that causes heavy IO.
+They scaled horizontaly, but the costs where getting pretty high.
 
-Used [ALS Matrixes]() with spark to do more with less :D.
+The culprit is Hadoop synchronization steps that causes heavy IO.
+
+Used [ALS Matrixes](TODO) with spark to do more with less :D.
 
 
 ### Pearson
 
 Next generation adaptative learning with spark.
 
+TODO: Get from presentation
+
 
 ### Yahoo
 
 Hadoop and Spark together.
 
+TODO: Get from presentation
+
 
 ### Common pattern
 
-Use kafka to connect clusters of spark streamers and save results on cassandra
+Use kafka to connect clusters of spark streamers and save results on cassandra.
 
 
 ## Projects
 
-* [DeepDive](http://deepdive.stanford.edu/)
-* [Titan](http://thinkaurelius.github.io/titan/)
-* [D3JS](http://d3js.org/)
+Some projects mentioned that I found interesting:
+
 * [Pandas](http://pandas.pydata.org/)
-* Giraph
-* Graphlab
 * Drill
 * Impala
 * Storm
@@ -102,5 +140,4 @@ Use kafka to connect clusters of spark streamers and save results on cassandra
 
 
 ## Interesting Papers
-
 
