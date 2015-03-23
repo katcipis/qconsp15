@@ -3,7 +3,8 @@
 * A lot of jabah from databricks about their notebook thing, that is like google docs
 * Has stuff like visualization of data (d3js)
 * Loves functional programming (Clojure) :-)
-* Lazy evaluated, just builds graph with transformations and wait action to start evaluation.
+* Lazy evaluated, just builds graph ([DAG](http://en.wikipedia.org/wiki/Directed_acyclic_graph) )
+  with transformations and wait action to start evaluation.
 * Filtering / lambda based
 * Pipeline based, makes good use of cache, works on memory
 * Well suited to functional programming, map and filtering builds a graph
@@ -65,12 +66,17 @@ Spotify used Hadoop to do music recommendation. Wanted to cut costs.
 
 Hadoop has a lot of synchronization steps that causes heavy IO.
 
-Used [TODO]() with spark to do more with less :D.
+Used [ALS Matrixes]() with spark to do more with less :D.
 
 
 ### Pearson
 
 Next generation adaptative learning with spark.
+
+
+### Yahoo
+
+Hadoop and Spark together.
 
 
 ### Common pattern
@@ -80,6 +86,8 @@ Use kafka to connect clusters of spark streamers and save results on cassandra
 
 ## Projects
 
+* [DeepDive](http://deepdive.stanford.edu/)
+* [Titan](http://thinkaurelius.github.io/titan/)
 * [D3JS](http://d3js.org/)
 * [Pandas](http://pandas.pydata.org/)
 * Giraph
