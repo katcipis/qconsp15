@@ -1,14 +1,14 @@
 #Intro
 
-* A lot of *jabah* from databricks about their notebook thing.
-* Has stuff like visualization of data (d3js)
 * Loves functional programming (Clojure) :-)
-* Lazy evaluated, just builds graphs ([DAG](http://en.wikipedia.org/wiki/Directed_acyclic_graph) )
+* Streaming graph is lazy evaluated, just builds graphs ([DAG](http://en.wikipedia.org/wiki/Directed_acyclic_graph) )
   with transformations and wait action to start evaluation.
 * Transformations / lambda based
 * Pipeline based, makes good use of cache, works on memory
 * Remove synchronization requirements using function composition and algebra :D
 * Core concept is a collection of functions working on arrays of data.
+
+The presentation can be found [here](http://training.databricks.com/workshop/sparkcamp.pdf).
 
 
 ## MapReduce x Spark
@@ -38,6 +38,8 @@ Later on there will be a interesting use case from spotify that relates to this 
 
 * If RDD partition is lost it will recover by recomputing (all nodes knows the entire graph)
 * If upstream processing is too heavy you can do checkpoints (tradeoff)
+* Relies heavily on caching to be achieve high performance
+* Has broadcast mechanism that can be useful to share small common datasets (avoid locality problem).
 * [Accumulators](TODO) can be used for telemetry on performance tests, or error collection.
 * [Broadcast](TODO) variables are useful for small datasets.
 * Has logical views of [RDDs to make it SQL](http://spark.apache.org/docs/latest/sql-programming-guide.html).
