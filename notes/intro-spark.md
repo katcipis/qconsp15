@@ -137,3 +137,9 @@ Some projects mentioned that I found interesting:
 * [Discretized Streams: A Fault-Tolerant Model for Scalable Stream Processing](http://www.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf)
 * [A Few Useful Things to Know about Machine Learning](http://homes.cs.washington.edu/~pedrod/papers/cacm12.pdf)
 * [Pregel: Large-scale graph computing at Google](http://googleresearch.blogspot.com.br/2009/06/large-scale-graph-computing-at-google.html)
+
+
+## MOOCS
+
+* [Scalable Machine Learning](https://www.edx.org/course/scalable-machine-learning-uc-berkeleyx-cs190-1x#.VRb_g-nd_0o)
+* [Introduction to Big Data with Apache Spark](https://www.edx.org/course/introduction-big-data-apache-spark-uc-berkeleyx-cs100-1x#.VRb_fend_0o)
