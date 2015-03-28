@@ -67,7 +67,7 @@ Fault tolerance can be done with:
 You are always on control on the tradeoff or recomputing failed nodes or doing synchronization.
 
 
-## MLlib
+### MLlib
 
 * Machine learning on spark
 * Focused on scale, parallelism and sparsity
@@ -80,13 +80,23 @@ There is some work on the way to add [deep neural networks](http://deepmind.com/
 on spark too, but it seems to be a work on progress.
 
 
-## GraphX
+### GraphX
 
 There is a lot of support to model graphs and apply algorithms to them.
 
 He also talked a lot about graph visualization tools.
 
 They are all listed on [Tools](#graphs).
+
+
+### Cluster management
+
+Spark comes with a few [cluster management options](http://spark.apache.org/docs/1.2.1/cluster-overview.html#cluster-manager-types).
+
+Spark has mesos integration, and it seems to be an [integration between mesos and kubernetes](https://mesosphere.com/2014/07/10/mesosphere-announces-kubernetes-on-mesos/).
+
+The project [kubernetes-mesos](https://github.com/mesosphere/kubernetes-mesos) seems interesting, 
+but it is a work in progress right now.
 
 
 ## Cases
