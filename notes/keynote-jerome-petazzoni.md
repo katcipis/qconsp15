@@ -14,7 +14,8 @@ Some things that I found specially cool.
 
 ## Blue / Green deployment
 
-He started to talk a little about [Blue/Green](TODO) deployment.
+He started to talk a little about [Blue/Green](http://martinfowler.com/bliki/BlueGreenDeployment.html) 
+deployment.
 
 Working with a strategy like that is pretty cool and enables faster deployments
 since you don't have to be afraid of problems, since rolling back the update 
@@ -31,9 +32,9 @@ I was already working with docker to enable better development environments
 must enable a easy way to build and run tests.
 
 Sometimes a service that you are developing depends on other services to run and 
-[docker compose](TODO) provides a very declarative way to do that.
-Using [linking](TODO) docker compose enables something like service discovery
-for your development environment.
+[docker compose](https://github.com/docker/compose) provides a very declarative way to do that.
+Using [linking](https://docs.docker.com/userguide/dockerlinks/) 
+docker compose enables something like service discovery for your development environment.
 
 Using tools like docker compose is specially important when you are working with
 microservices, where a lot of different languages and tools are involved on
@@ -42,7 +43,8 @@ building a proper development environment.
 
 ## Testing
 
-Tests must be [FIRST](TODO), and docker enables this easily. For a good case of this
+Tests must be [FIRST](https://pragprog.com/magazines/2012-01/unit-tests-are-first), 
+and docker enables this easily. For a good case of this
 take a look on the docker project itself, pretty cool what they have going on there :-).
 
 But there is something that caught my atention because it is a problem that I have been
@@ -64,7 +66,7 @@ isolation of the tests. Everyone messing around on one database is a recipe for 
 specially on testing, where things will usually go wrong and the database may be left 
 on a very odd state.
 
-If your tests gets non deterministic, you have a [problem](TODO).
+If your tests gets non deterministic, you have a [problem](http://martinfowler.com/articles/nonDeterminism.html).
 Non deterministic tests are worse than no tests, because they don't help you and effectively
 waste your time.
 
@@ -109,16 +111,17 @@ It seems that [Flocker](https://github.com/clusterhq/flocker) could help with th
 
 ## Managing a cluster
 
+Jerome mentioned the possibility of using [docker swarm](https://github.com/docker/swarm/) + 
+[mesos](http://mesos.apache.org/) where docker swarm offloads jobs to mesos.
 
-Jerome mentioned the possibility of using [docker swarm](TODO) + [mesos](TODO) where
-docker swarm offloads jobs to mesos.
+There is another possible combination of [kubernetes + mesos](https://github.com/mesosphere/kubernetes-mesos).
 
-A complete solution of service discovery and clustering is a work in progress.
+A complete solution of service discovery and clustering is a work in progress (Jerome words :-).
 
 
 ## Tools
 
-Some tools mentioned along the presentation
+Some interesting tools mentioned along the presentation
 
 * [Flannel](https://github.com/coreos/flannel)
 * [Pipework](https://github.com/jpetazzo/pipework)
