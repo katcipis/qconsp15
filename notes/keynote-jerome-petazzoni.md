@@ -104,6 +104,8 @@ A CI/CD would be able to run a lot of concurrent tests, all using its own instan
 without using a lot of resources. And the writes happens only on the container layer, completely isolated
 from the other tests.
 
+It seems that [Flocker](https://github.com/clusterhq/flocker) could help with this kind of a setup.
+
 
 ## Managing a cluster
 
@@ -118,10 +120,7 @@ A complete solution of service discovery and clustering is a work in progress.
 
 Some tools mentioned along the presentation
 
-### Flannel
-
-### Pipework
-
-### Flocker
-
-### CRIU
+* [Flannel](https://github.com/coreos/flannel)
+* [Pipework](https://github.com/jpetazzo/pipework)
+* [Flocker](https://github.com/clusterhq/flocker)
+* [CRIU](http://criu.org/Main_Page)
