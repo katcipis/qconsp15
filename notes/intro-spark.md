@@ -1,14 +1,12 @@
 #Intro
 
 * Lot of love for functional programming (Clojure) :-)
+* Stream processing is graph based.
 * Streaming graph is lazy evaluated, just builds graphs ([DAG](http://en.wikipedia.org/wiki/Directed_acyclic_graph) )
   with transformations and wait action to start evaluation.
-* Transformations / lambda based
-* Pipeline based, makes good use of cache, works on memory
-* Remove synchronization requirements using function composition and algebra :D
 * Core concept is a collection of functions working on arrays of data.
 
-The presentation can be found [here](http://training.databricks.com/workshop/sparkcamp.pdf).
+The workshop presentation can be found [here](http://training.databricks.com/workshop/sparkcamp.pdf).
 
 
 ## MapReduce x Spark
@@ -59,15 +57,14 @@ It is pretty easy to receive data from a event source live and create an process
 results to another remote endpoint or saving it on a HDFS (or other distributed filesystem).
 
 There is no protocol defined for remote endpoints, they can be raw sockets with your data flowing on them
-(fits the streaming nature of TCP).
+or other protocols like ZeroMQ or Flannel.
 
-Fault tolerance can be done with two ideas:
+Fault tolerance can be done with:
 
 * Reprocess the entire graph on a new Node
-* Use checkpoints (similar to hadoop synchronization)
-* There is a write ahead log for the live streams.
+* Using checkpoints (similar to hadoop synchronization)
 
-You are always on control.
+You are always on control on the tradeoff or recomputing failed nodes or doing synchronization.
 
 
 ## MLlib
@@ -77,7 +74,6 @@ You are always on control.
 * Classifiers, regression
 * Lot of unsupervised learning using matrix factoring
 * Useful for marketing (eg, clustering for market segmentation)
-* Lot of small exercises using [K-Means clustering](http://en.wikipedia.org/wiki/K-means_clustering)
 * Works well with big square matrices (contributions from stanford)
 
 There is some work on the way to add [deep neural networks](http://deepmind.com/) 
@@ -103,7 +99,7 @@ They are all listed on [Tools](#graphs).
 * [Guavus](https://databricks.com/blog/2014/09/25/guavus-embeds-apache-spark-into-its-operational-intelligence-platform-deployed-at-the-worlds-largest-telcos.html)
 * [Ebay](http://www.ebaytechblog.com/2014/05/28/using-spark-to-ignite-data-analytics/)
 * [Yahoo](http://spark-summit.org/talk/feng-hadoop-and-spark-join-forces-at-yahoo/)
-
+* [Databricks customers](https://databricks.com/resources/customer-case-studies)
 
 ## Projects
 
