@@ -24,7 +24,7 @@ Of course there is a desire to sell stuff, but some things seems to be really di
 One of them is the smart client idea.
 
 For example, on Cassandra, the client is dump and it talks with a coordinator. The coordinator does the writes, knows
-the cluster, participates on gossiping and paxos.
+the cluster, participates on gossiping and [paxos](http://en.wikipedia.org/wiki/Paxos_%28computer_science%29).
 
 On Aerospike the client is the coordinator (that is why the client is *smart*), it is aware of the cluster and it
 contains all knowledge required to perform a read/write directly on the nodes, it does needs to talk with a coordinator.
@@ -57,3 +57,5 @@ They showed some great concern about performance and showed great technological 
 The project has been [open sourced](http://www.aerospike.com/docs/architecture/) recently.
 
 There is a more detailed [documentation about the architecture](http://www.aerospike.com/docs/architecture/).
+The only annoying thing is all the talk about *ACID* which we [know](http://en.wikipedia.org/wiki/CAP_theorem) it is bullshit :-).
+On the end it guarantees partitioning and availability :-).
