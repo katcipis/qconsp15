@@ -125,6 +125,16 @@ prevents the traditional **the system does not work but everyone did their job s
 thing. If it is not working, it is the team fault (the entire team), period.
 
 
+## Interesting tools
+
+Basically a lot of cool stuff from Netflix OSS:
+
+* [Ribbon](https://github.com/Netflix/ribbon)
+* [Histrix](https://github.com/Netflix/Hystrix)
+* [Eureka](https://github.com/Netflix/eureka)
+* [Asgard](https://github.com/Netflix/asgard)
+
+
 ## Conclusion
 
 It was a great presentation, it showed clearly that microservices is more a cultural change than a technology thing
