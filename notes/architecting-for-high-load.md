@@ -17,7 +17,7 @@ presentation was about how to architect systems for high load, really good stuff
 * [NUMA](http://en.wikipedia.org/wiki/Non-uniform_memory_access)
 * Detailed explanation of how SSD works :-)
 
-Everything made since the idea was to lay down a basis to explain how Aerospike can be
+The presentation job was to lay down a basis to explain how Aerospike can be
 totally awesome and faster than anything :P.
 
 Of course there is a desire to sell stuff, but some things seems to be really different about Aerospike.
